@@ -1,0 +1,49 @@
+.image-card{
+    margin: 16 0;
+}
+.profile{
+    border-radius: 50%;
+    width: 48;
+    height: 48;
+    
+}
+
+.title{
+    font-size: 16;
+    font-weight: 700;
+    color: #000;
+}
+
+.subtitle {
+    font-size: 14;
+    font-weight: 500;
+}
+
+.regular{
+    font-weight: 700;
+    font-size: 14;
+    color: #000;
+}
+
+.image-container{
+    min-height: 144;
+    background-color: #afafaf;
+}
+
+.image{
+    width: 32;
+    height: 32;
+    margin: 0 4;
+}
+
+.image--left{
+    float: left;
+}
+
+.image--right{
+    float: right;
+}
+
+.row{
+    padding: 8;
+}

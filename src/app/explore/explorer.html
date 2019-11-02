@@ -1,0 +1,34 @@
+<ActionBar [title]="image.getTitle()">
+    <!-- Explicitly hiding the NavigationBar to prevent the default one on iOS-->
+    <NavigationButton visibility="collapsed"></NavigationButton>
+
+    <!-- Using the icon property and Icon Fonts -->
+    <ActionItem position="left" icon="res://back" class="fas" (tap)="goBack()"></ActionItem>
+
+</ActionBar>
+<StackLayout>
+    <GridLayout rows="72, *, 56, *">
+        <GridLayout columns="70,*" row="0">
+            <Image [src]="image.getProfilePicture()" column="0" class="profile" verticalAlignment="center"></Image>
+            <StackLayout column="1" verticalAlignment="center">
+                <Label [text]="image.getUsername()" class="title"></Label>
+                <Label [text]="image.getLocation()" class="subtitle"></Label>
+            </StackLayout>
+        </GridLayout>
+        <StackLayout row="1" height="auto">
+            <Image [src]="image.getOriginal()" stretch="none"></Image>
+        </StackLayout>
+        <GridLayout column="*, 48" row="2" class="row">
+            <StackLayout orientation="horizontal" column="0">
+                <Image src="res://heart" class="image image--left"></Image>
+                <Image src="res://message" class="image image--left"></Image>
+                <Image src="res://send" class="image image--left"></Image>
+            </StackLayout>
+            <Image src="res://save" class="image image--right" column="1" horizontalAlignment="right"></Image>
+        </GridLayout>
+        <StackLayout row="3" class="row">
+            <Label text="likes {{image.getLikeCount()}}" class="regular"></Label>
+            <Label [text]="image.getDescription()"></Label>
+        </StackLayout>
+    </GridLayout>
+</StackLayout>

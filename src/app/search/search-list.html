@@ -1,0 +1,10 @@
+<StackLayout>
+    <SearchBar hint="Search hint" (submit)="onSubmit($event)" color="black" textFieldBackgroundColor="white"
+        textFieldHintColor="white"></SearchBar>
+    <StackLayout>
+        <ng-container>
+            <ImageGallery [images]="images" [type]="galleryType" (loadMore)="onLoadMoreItemsRequested($event)">
+            </ImageGallery>
+        </ng-container>
+    </StackLayout>
+</StackLayout>

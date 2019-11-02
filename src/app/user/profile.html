@@ -1,0 +1,21 @@
+<GridLayout rows="98,*,*">
+    <GridLayout columns="98,*" row="0">
+        <Image [src]="user.getProfilePicture()" column="0" class="profile" verticalAlignment="center"></Image>
+        <StackLayout column="1" verticalAlignment="center">
+            <Label [text]="user.getUsername()" class="title"></Label>
+            <Label [text]="user.getLocation()" class="subtitle"></Label>
+        </StackLayout>
+    </GridLayout>
+    <StackLayout>
+        <Label [text]="user.getBio()"></Label>
+    </StackLayout>
+    <!--<TabView androidTabsPosition="top">
+        <StackLayout *tabItem="{ iconSource: 'res://grid'}">
+            <ImageGallery [images]="user.getImages()" type="grid"></ImageGallery>
+            <Label text="Inside photo tab"></Label>
+        </StackLayout>
+        <StackLayout *tabItem="{iconSource: 'res://heart'}">
+            <Label text="Inside activity tab"></Label>
+        </StackLayout>
+    </TabView>-->
+</GridLayout>

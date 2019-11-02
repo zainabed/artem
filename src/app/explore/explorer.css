@@ -1,0 +1,39 @@
+.profile{
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    
+}
+
+.title{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.regular{
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.image{
+    width: 48px;
+    height: 48px;
+    padding: 0 16px;
+}
+
+.image--left{
+    float: left;
+}
+
+.image--right{
+    float: right;
+}
+
+.row{
+    padding: 8px;
+}
