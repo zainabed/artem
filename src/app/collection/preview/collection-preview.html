@@ -1,0 +1,8 @@
+<StackLayout class="preview-container">
+
+    <StackLayout class="preview" verticalAlignment="center">
+        <Image [src]="collection.getCoverPhoto().getThumbnail()" class="preview-image" horizontalAlignment="center">
+        </Image>
+    </StackLayout>
+    <Label [text]="collection.getTitle()" horizontalAlignment="center" class="title"></Label>
+</StackLayout>

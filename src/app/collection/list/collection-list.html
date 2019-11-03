@@ -1,0 +1,9 @@
+<StackLayout>
+    <RadListView [items]="collections">
+        <ng-template tkListItemTemplate let-item="item">
+            <StackLayout>
+                <Collection [collection]="item"></Collection>
+            </StackLayout>
+        </ng-template>
+    </RadListView>
+</StackLayout>

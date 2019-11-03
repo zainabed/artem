@@ -1,6 +1,7 @@
 <StackLayout style="background-color: bisque;">
-    <RadListView [items]="galleryService.getImages()" loadOnDemandMode="Auto"
-        (loadMoreDataRequested)="onLoadMore($event)">
+    <RadListView [items]="galleryService.getImages()" loadOnDemandMode="Auto" #listView
+        (loadMoreDataRequested)="onLoadMore($event)" [id]="id" (loaded)="loadedEvent($event)"
+        selectionBehavior="Press" (itemSelected)="onItemSelected($event)">
         <ng-template tkListItemTemplate let-item="item">
             <StackLayout>
                 <ImageContainer *ngIf="galleryService.isOfType('grid')" [image]="item"></ImageContainer>

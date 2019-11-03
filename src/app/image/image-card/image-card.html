@@ -9,15 +9,15 @@
             </StackLayout>
         </GridLayout>
         <StackLayout row="1" height="auto" class="image-container">
-            <Image [src]="image.getOriginal()" stretch="aspectFit"></Image>
-        </StackLayout>
+            <Image [src]="image.getOriginal()" stretch="aspectFill" height="250"></Image>
+        </StackLayout>  
         <GridLayout column="*, 48" row="2" class="row">
             <StackLayout orientation="horizontal" column="0">
-                <Image src="res://heart" class="image image--left"></Image>
-                <Image src="res://message" class="image image--left"></Image>
-                <Image src="res://send" class="image image--left"></Image>
+                <Image src="res://ic_action_heart" class="image image--left"></Image>
+                <Image src="res://ic_action_chat" class="image image--left"></Image>
+                <Image src="res://ic_action_send" class="image image--left"></Image>
             </StackLayout>
-            <Image src="res://save" class="image image--right" column="1" horizontalAlignment="right"></Image>
+            <Image src="res://ic_action_save" class="image image--right" column="1" horizontalAlignment="right"></Image>
         </GridLayout>
         <StackLayout row="3" class="row">
             <Label text="likes {{image.getLikeCount()}}" class="regular"></Label>

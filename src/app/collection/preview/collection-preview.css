@@ -1,0 +1,21 @@
+.preview-container{
+    margin: 0 8;
+}
+.preview{
+    width: 56;
+    height: 56;
+    border-radius: 50%;
+    background-color: indigo;
+}
+
+.preview-image{
+    padding: 2;
+    width: 54;
+    height: 54;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.title{
+    width: 20;
+}

@@ -1,4 +1,5 @@
 import { Image } from "../image/image";
+import { Collection } from "../collection/collection";
 
 export abstract class User {
     abstract getUsername(): string;
@@ -11,4 +12,6 @@ export abstract class User {
     abstract getPhotoCount(): number;
     abstract getLikeCount(): number;
     abstract getCollectionCount(): number;
+    abstract setCollection(collections: Array<Collection>): void;
+    abstract getCollection(): Array<Collection>;
 }

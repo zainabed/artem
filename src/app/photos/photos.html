@@ -1,0 +1,6 @@
+<ActionBar [title]="photoService.getTitle()">
+    <NavigationButton icon="res://ic_action_back" (tap)="goBack()"></NavigationButton>
+</ActionBar>
+<StackLayout>
+    <ImageGallery [images]="photoService.getPhotos()" [type]="type" [scrollAt]="photoService.getIndex()"></ImageGallery>
+</StackLayout>

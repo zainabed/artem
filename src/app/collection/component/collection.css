@@ -3,40 +3,20 @@
 }
 .profile{
     border-radius: 50%;
-    width: 72;
-    height: 72;
-    padding: 2;
-    border-color: indigo;
+    width: 48;
+    height: 48;
     
 }
 
-TabStripItem{
-    font-size: 18;
-}
-
-.col-40{
-  margin-right: 16;
-}
-
-.heading{
-    font-size: 18px;
-    font-weight: 700;
-    color: #000;
-}
-
-.col-20{
-    margin: 0 8;
-}
-
 .title{
-    font-size: 18;
+    font-size: 16;
     font-weight: 700;
     color: #000;
 }
 
 .subtitle {
     font-size: 14;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .regular{

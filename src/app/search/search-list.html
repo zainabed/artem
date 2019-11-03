@@ -3,8 +3,9 @@
         textFieldHintColor="white"></SearchBar>
     <StackLayout>
         <ng-container>
-            <ImageGallery [images]="images" [type]="galleryType" (loadMore)="onLoadMoreItemsRequested($event)">
+            <ImageGallery [images]="images" [type]="galleryType" 
+            (onTap)="onImageSelect($event)" (loadMore)="onLoadMoreItemsRequested($event)">
             </ImageGallery>
         </ng-container>
     </StackLayout>
-</StackLayout>
+</StackLayout> 

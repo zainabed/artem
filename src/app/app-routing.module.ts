@@ -9,6 +9,7 @@ import { ExplorerComponent } from "./explore/explorer.component";
 import { HomeComponent } from "./home/home.component";
 import { ProfileComponent } from "./user/profile.component";
 import { IndexComponent } from "./index/index.component";
+import { PhotosComponent } from "./photos/photos.component";
 
 const routes: Routes = [
     { path: "", component: IndexComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
     { path: "search", component: SearchListComponent, outlet: "search" },
     { path: "explorer", component: ExplorerComponent, outlet: "search" },
     { path: "item/:id", component: ItemDetailComponent },
-    { path: "profile/:id", component: ProfileComponent }
+    { path: "profile/:id", component: ProfileComponent },
+    { path: "photos", component: PhotosComponent}
 ];
 
 @NgModule({

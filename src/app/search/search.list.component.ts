@@ -8,6 +8,7 @@ import { Image } from "../image/image";
 import { RouterExtensions } from "nativescript-angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { GALLERY_TYPE } from "../gallery/gallery.type";
+import { PhotoService } from "../photos/photo.service";
 
 interface Item {
     title: string;
@@ -25,7 +26,10 @@ export class SearchListComponent implements OnInit {
     searchText: string;
     public galleryType: GALLERY_TYPE;
 
-    constructor(private imageService: ImageService, private routerExtensions: RouterExtensions, 
+    constructor(
+        private imageService: ImageService, 
+        private photoService: PhotoService,
+        private routerExtensions: RouterExtensions, 
         private _activateRoute: ActivatedRoute) {
         this.page = 1;
     }
@@ -70,5 +74,12 @@ export class SearchListComponent implements OnInit {
 
     onFail(error: any) {
 
+    }
+
+    onImageSelect(index: number){
+        this.photoService.setPhotos(this.images);
+        this.photoService.setIndex(index);
+        this.photoService.setTitle("Explorer");
+        this.routerExtensions.navigate(["/photos"]);
     }
 }

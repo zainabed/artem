@@ -1,47 +1,59 @@
 <ActionBar [title]="user.getUsername()">
-    <NavigationButton icon="res://ic_arrow_back_black_24dp" (tap)="goBack()"></NavigationButton>
-</ActionBar>
+    <NavigationButton icon="res://ic_action_back" (tap)="goBack()"></NavigationButton>
+    <ActionItem text="Report..." ios.position="right" android.position="popup"></ActionItem>
+    <ActionItem text="Block" ios.position="right" android.position="popup"></ActionItem>
+    <ActionItem text="About This Account" ios.position="right" android.position="popup"></ActionItem>
+    <ActionItem text="Restrict" ios.position="right" android.position="popup"></ActionItem>
+    <ActionItem text="Hide Your Story" ios.position="right" android.position="popup"></ActionItem>
+    <ActionItem text="Send Profile as Message" ios.position="right" android.position="popup"></ActionItem>
+</ActionBar> 
 <StackLayout>
     <StackLayout orientation="horizontal" padding="16">
         <StackLayout class="col-40">
             <Image [src]="user.getProfilePicture()" class="profile" verticalAlignment="center"></Image>
         </StackLayout>
         <StackLayout class="col-20" verticalAlignment="center">
-            <Label text="Photos" class="heading"></Label>
-            <Label [text]="user.getPhotoCount()" class="subtitle"></Label>
+            <Label [text]="user.getPhotoCount()" class="heading" horizontalAlignment="center"></Label>
+            <Label text="Photos"  class="subtitle"horizontalAlignment="center"></Label>
         </StackLayout>
         <StackLayout class="col-20" verticalAlignment="center">
-            <Label text="Collections" class="heading"></Label>
-            <Label [text]="user.getCollectionCount()" class="subtitle"></Label>
+            <Label [text]="user.getCollectionCount()" class="heading" horizontalAlignment="center"></Label>
+            <Label text="Collections"class="subtitle" horizontalAlignment="center"></Label>
         </StackLayout>
         <StackLayout class="col-20" verticalAlignment="center">
-            <Label text="Likes" class="heading"></Label>
-            <Label [text]="user.getLikeCount()" class="subtitle"></Label>
+            <Label [text]="user.getLikeCount()" class="heading" horizontalAlignment="center"></Label>
+            <Label text="Likes"  class="subtitle"horizontalAlignment="center"></Label>
         </StackLayout> 
     </StackLayout>
-    <StackLayout padding="4 16">
+    <StackLayout padding="0 16">
         <Label [text]="user.getName()" class="title"></Label>
         <Label [text]="user.getLocation()" class="subtitle"></Label>
         <Label [text]="user.getBio()"></Label>
     </StackLayout>
+    <StackLayout tkExampleTitle tkToggleNavButton *ngIf="user.getCollection()">
+        <CollectionPreviewList [collections]="user.getCollection()"></CollectionPreviewList>
+    </StackLayout>
     <StackLayout>
-        <Tabs>
+        <Tabs style="background-color: #fff;">
             <TabStrip>
-                <TabStripItem iconSource="res://grid"> 
+                <TabStripItem iconSource="res://ic_action_grid">
                 </TabStripItem>
-                <TabStripItem iconSource="res://heart">
-                 </TabStripItem>
+                <TabStripItem iconSource="res://ic_action_collection">
+                </TabStripItem>
             </TabStrip>
             <TabContentItem>
                 <GridLayout>
-                    <ImageGallery [images]="user.getImages()" type="grid"></ImageGallery>
+                    <ImageGallery [images]="user.getImages()" type="grid" (onTap)="onImageSelect($event)">
+                    </ImageGallery>
                 </GridLayout>
             </TabContentItem>
+
             <TabContentItem>
                 <GridLayout>
-                    <Label text="Account Page" class="h2 text-center"></Label>
+                    <CollectionList [collections]="user.getCollection()"></CollectionList>
                 </GridLayout>
             </TabContentItem>
+
         </Tabs>
     </StackLayout>
 </StackLayout>

@@ -1,0 +1,10 @@
+<StackLayout *ngIf="collections">
+    <RadListView [items]="collections" height="90">
+        <ng-template tkListItemTemplate let-item="item">
+            <StackLayout>
+                <CollectionPreview [collection]="item"></CollectionPreview>
+            </StackLayout>
+        </ng-template>
+        <ListViewLinearLayout tkListViewLayout scrollDirection="Horizontal"></ListViewLinearLayout>
+    </RadListView>
+</StackLayout>  

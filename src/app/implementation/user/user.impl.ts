@@ -1,10 +1,9 @@
 import { User } from "~/app/user/user";
 import { Image } from "~/app/image/image";
 import { ImageImple } from "../image/image.impl";
+import { Collection } from "~/app/collection/collection";
 
 export class UserImpl implements User {
-    
-
 
     private username: string;
     private name: string;
@@ -15,10 +14,13 @@ export class UserImpl implements User {
     private total_collections: number;
     private total_likes: number;
     private total_photos: number;
+    private collections: Array<Collection>;
 
     constructor(data: any) {
+        this.collections = [];
         Object.assign(this, data);
         this.images = data.photos;
+
     }
 
     set images(data: Array<any>) {
@@ -57,10 +59,21 @@ export class UserImpl implements User {
     getPhotoCount(): number {
         return this.total_photos;
     }
+
     getLikeCount(): number {
         return this.total_likes;
     }
+
     getCollectionCount(): number {
         return this.total_collections;
     }
+
+    setCollection(collections: Collection[]): void {
+        this.collections = collections;
+    }
+
+    getCollection(): Collection[] {
+        return this.collections;
+    }
+
 }
