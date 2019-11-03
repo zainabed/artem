@@ -1,0 +1,62 @@
+.image-card{
+    margin: 16 0;
+}
+.profile{
+    border-radius: 50%;
+    width: 72;
+    height: 72;
+    
+}
+
+.col-40{
+  margin-right: 16;
+}
+
+.heading{
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.col-20{
+    margin: 0 8;
+}
+
+.title{
+    font-size: 18;
+    font-weight: 700;
+    color: #000;
+}
+
+.subtitle {
+    font-size: 16;
+    font-weight: 500;
+}
+
+.regular{
+    font-weight: 700;
+    font-size: 14;
+    color: #000;
+}
+
+.image-container{
+    min-height: 144;
+    background-color: #afafaf;
+}
+
+.image{
+    width: 32;
+    height: 32;
+    margin: 0 4;
+}
+
+.image--left{
+    float: left;
+}
+
+.image--right{
+    float: right;
+}
+
+.row{
+    padding: 8;
+}

@@ -15,7 +15,7 @@ export class GalleryServiceImpl implements GalleryService {
     }
 
     isOfType(type: string): boolean {
-        return this._type == type;
+       return this._type == type;
     }
 
     setImages(images: Image[]): void {

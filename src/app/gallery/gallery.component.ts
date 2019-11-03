@@ -3,6 +3,7 @@ import { Image } from "../image/image";
 import { GalleryService } from "./gallery.service";
 import { LoadOnDemandListViewEventData } from "nativescript-ui-listview";
 import { GALLERY_TYPE } from "./gallery.type";
+import { GalleryFactory } from "./gallery.factory";
 
 @Component({
     selector: "ImageGallery",
@@ -15,8 +16,10 @@ export class GalleryComponent implements OnInit {
     @Input() type: GALLERY_TYPE;
     @Output() loadMore: EventEmitter<any> = new EventEmitter();
     public galleryType: GALLERY_TYPE;
-
-    constructor(public galleryService: GalleryService) { }
+    public galleryService: GalleryService;
+    constructor(galleryFactory: GalleryFactory) {
+        this.galleryService = galleryFactory.getGalleryService();
+    }
 
     @Input() set images(images: Array<Image>) {
         this.galleryService.setImages(images);

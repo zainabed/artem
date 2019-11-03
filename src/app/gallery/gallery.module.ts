@@ -5,6 +5,8 @@ import { GalleryServiceImpl } from "./gallery.service.impl";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 import { ImageModule } from "../image/image.module";
+import { GalleryFactory } from "./gallery.factory";
+import { GalleryFactoryImpl } from "./gallery.factory.impl";
 
 
 @NgModule({
@@ -20,7 +22,7 @@ import { ImageModule } from "../image/image.module";
         GalleryComponent
     ],
     providers: [
-        { provide: GalleryService, useClass: GalleryServiceImpl }
+        { provide: GalleryFactory, useClass: GalleryFactoryImpl }
     ],
     schemas: [NO_ERRORS_SCHEMA]
 })

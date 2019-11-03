@@ -3,15 +3,15 @@
         (loadMoreDataRequested)="onLoadMore($event)">
         <ng-template tkListItemTemplate let-item="item">
             <StackLayout>
-                <ImageContainer *ngIf="galleryService.isOfType('list')" [image]="item"></ImageContainer>
-                <ImageCard *ngIf="galleryService.isOfType('grid')" [image]="item"></ImageCard>
+                <ImageContainer *ngIf="galleryService.isOfType('grid')" [image]="item"></ImageContainer>
+                <ImageCard *ngIf="galleryService.isOfType('list')" [image]="item"></ImageCard>
             </StackLayout>
         </ng-template>
-        <ListViewGridLayout tkListViewLayout *ngIf="galleryService.isOfType('list')" scrollDirection="Vertical"
-            ios:itemHeight="250" spanCount="3">
+        <ListViewGridLayout tkListViewLayout *ngIf="galleryService.isOfType('grid')" scrollDirection="Vertical"
+            ios:itemHeight="250" spanCount="3"> 
         </ListViewGridLayout>
     </RadListView> 
 
     <!--<ListViewStaggeredLayout *ngIf="galleryService.isOfType(galleryType.LIST)" tkListViewLayout
         scrollDirection="Vertical" spanCount="3"></ListViewStaggeredLayout>-->
-</StackLayout>
+</StackLayout> 

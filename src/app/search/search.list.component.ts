@@ -14,7 +14,7 @@ interface Item {
 }
 
 @Component({
-    selector: "search-list",
+    selector: "SearchList",
     templateUrl: "search-list.html",
     styleUrls: ["./search.css"]
 })

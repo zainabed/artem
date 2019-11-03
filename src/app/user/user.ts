@@ -6,5 +6,9 @@ export abstract class User {
     abstract getProfilePicture(): string;
     abstract getBio(): string;
     abstract getLocation(): string;
+    abstract setImages(images: Array<Image>): void;
     abstract getImages(): Array<Image>;
+    abstract getPhotoCount(): number;
+    abstract getLikeCount(): number;
+    abstract getCollectionCount(): number;
 }

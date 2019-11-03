@@ -1,16 +1,1 @@
-<!-- https://docs.nativescript.org/angular/core-concepts/angular-navigation.html#page-router-outlet -->
-
-<TabView androidTabsPosition="bottom">
-    <page-router-outlet *tabItem="{iconSource: 'res://home'}" name="home"></page-router-outlet>
-    <page-router-outlet *tabItem="{iconSource: 'res://search'}" name="search"></page-router-outlet>
-    
-    <StackLayout *tabItem="{ iconSource: 'res://add'}">
-        <Label text="Add Image Tab" textWrap="true" class="m-15 h2 text-left" color="blue"></Label>
-    </StackLayout>
-    <StackLayout *tabItem="{ iconSource: 'res://heart'}">
-        <Label text="Like Tab" textWrap="true" class="m-15 h2 text-left" color="blue"></Label>
-    </StackLayout>
-    <StackLayout *tabItem="{ iconSource: 'res://user'}">
-        <Label text="Profile Tab" textWrap="true" class="m-15 h2 text-left" color="blue"></Label>
-    </StackLayout>
-</TabView> 
+<page-router-outlet></page-router-outlet> 

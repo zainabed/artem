@@ -1,21 +1,47 @@
-<GridLayout rows="98,*,*">
-    <GridLayout columns="98,*" row="0">
-        <Image [src]="user.getProfilePicture()" column="0" class="profile" verticalAlignment="center"></Image>
-        <StackLayout column="1" verticalAlignment="center">
-            <Label [text]="user.getUsername()" class="title"></Label>
-            <Label [text]="user.getLocation()" class="subtitle"></Label>
+<ActionBar [title]="user.getUsername()">
+    <NavigationButton icon="res://ic_arrow_back_black_24dp" (tap)="goBack()"></NavigationButton>
+</ActionBar>
+<StackLayout>
+    <StackLayout orientation="horizontal" padding="16">
+        <StackLayout class="col-40">
+            <Image [src]="user.getProfilePicture()" class="profile" verticalAlignment="center"></Image>
         </StackLayout>
-    </GridLayout>
-    <StackLayout>
+        <StackLayout class="col-20" verticalAlignment="center">
+            <Label text="Photos" class="heading"></Label>
+            <Label [text]="user.getPhotoCount()" class="subtitle"></Label>
+        </StackLayout>
+        <StackLayout class="col-20" verticalAlignment="center">
+            <Label text="Collections" class="heading"></Label>
+            <Label [text]="user.getCollectionCount()" class="subtitle"></Label>
+        </StackLayout>
+        <StackLayout class="col-20" verticalAlignment="center">
+            <Label text="Likes" class="heading"></Label>
+            <Label [text]="user.getLikeCount()" class="subtitle"></Label>
+        </StackLayout> 
+    </StackLayout>
+    <StackLayout padding="4 16">
+        <Label [text]="user.getName()" class="title"></Label>
+        <Label [text]="user.getLocation()" class="subtitle"></Label>
         <Label [text]="user.getBio()"></Label>
     </StackLayout>
-    <!--<TabView androidTabsPosition="top">
-        <StackLayout *tabItem="{ iconSource: 'res://grid'}">
-            <ImageGallery [images]="user.getImages()" type="grid"></ImageGallery>
-            <Label text="Inside photo tab"></Label>
-        </StackLayout>
-        <StackLayout *tabItem="{iconSource: 'res://heart'}">
-            <Label text="Inside activity tab"></Label>
-        </StackLayout>
-    </TabView>-->
-</GridLayout>
+    <StackLayout>
+        <Tabs>
+            <TabStrip>
+                <TabStripItem iconSource="res://grid"> 
+                </TabStripItem>
+                <TabStripItem iconSource="res://heart">
+                 </TabStripItem>
+            </TabStrip>
+            <TabContentItem>
+                <GridLayout>
+                    <ImageGallery [images]="user.getImages()" type="grid"></ImageGallery>
+                </GridLayout>
+            </TabContentItem>
+            <TabContentItem>
+                <GridLayout>
+                    <Label text="Account Page" class="h2 text-center"></Label>
+                </GridLayout>
+            </TabContentItem>
+        </Tabs>
+    </StackLayout>
+</StackLayout>

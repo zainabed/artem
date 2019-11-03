@@ -17,6 +17,7 @@ export class ImageCardComponent implements OnInit {
     }
 
     onProfileTap(username: string) {
+        console.log("tap on : " +  username);
         this.routerExtensions.navigate(["/profile", username]);
     }
 }

@@ -14,6 +14,7 @@ import { HomeModule } from "./home/home.module";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AuthInterceptor } from "./util/http/auth.interceptor";
 import { UserModule } from "./user/user.module";
+import { IndexComponent } from "./index/index.component";
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -38,7 +39,8 @@ import { UserModule } from "./user/user.module";
     declarations: [
         AppComponent,
         ItemsComponent,
-        ItemDetailComponent
+        ItemDetailComponent,
+        IndexComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

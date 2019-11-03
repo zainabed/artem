@@ -22,7 +22,7 @@ import { ImageCardComponent } from "./image-card/image.card.component";
     ],
     exports: [
         ImageContainer,
-        
+        ImageCardComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
