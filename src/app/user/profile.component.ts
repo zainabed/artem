@@ -9,6 +9,7 @@ import { CollectionService } from "../collection/collection.service";
 import { CollectionFactory } from "../collection/collection.factory";
 import { Collection } from "../collection/collection";
 import { PhotoService } from "../photos/photo.service";
+import { UserFactory } from "./user.factory";
 
 @Component({
     selector: "Profile",
@@ -17,16 +18,18 @@ import { PhotoService } from "../photos/photo.service";
 })
 export class ProfileComponent implements OnInit {
     public user: User;
+    public userService: Userservice;
     private colletioService: CollectionService;
     username: string;
 
     constructor(
-        private userService: Userservice,
+        private userFactory: UserFactory,
         private collectionFactory: CollectionFactory,
         private routerExtensions: RouterExtensions,
         private photoService: PhotoService,
         private route: ActivatedRoute) {
-            this.user = null;
+        this.user = this.userFactory.getUser();
+        this.userService = this.userFactory.getUserService();
         this.colletioService = this.collectionFactory.getCollectionService();
     }
 

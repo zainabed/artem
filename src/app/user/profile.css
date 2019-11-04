@@ -65,5 +65,10 @@ TabStripItem{
 }
 
 .row{
-    padding: 8;
+    margin: 0 8;
+}
+
+.button--primary{
+    background-color: #66F;
+    color: #fff;
 }

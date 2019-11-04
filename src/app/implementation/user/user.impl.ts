@@ -17,13 +17,16 @@ export class UserImpl implements User {
     private collections: Array<Collection>;
 
     constructor(data: any) {
-        this.collections = [];
+        this.collections = null;
         Object.assign(this, data);
         this.images = data.photos;
 
     }
 
     set images(data: Array<any>) {
+        if (data == null) {
+            return;
+        }
         this._images = data.map(image => new ImageImple(image));
         console.log(this._images);
     }
@@ -41,6 +44,7 @@ export class UserImpl implements User {
     }
 
     getProfilePicture(): string {
+        if (!this.profile_image) return;
         return this.profile_image.medium;
     }
 

@@ -1,15 +1,7 @@
-<StackLayout class="collection-card">
-    <GridLayout rows="72, *, 56, *">
-        <StackLayout row="0" verticalAlignment="center" class="row">
-            <Label [text]="collection.getTitle()" class="title"></Label>
-            <Label [text]="collection.getCreatedAt()" class="subtitle"></Label>
-        </StackLayout>
-        <StackLayout row="1" height="auto" class="collection-container">
-            <Image [src]="collection.getCoverPhoto().getOriginal()" stretch="aspectFill" height="250"></Image>
-        </StackLayout>
-        <StackLayout row="2" class="row">
-            <Label text="Photos {{collection.getPhotoCount()}}" class="regular"></Label>
-            <Label [text]="collection.getDescription()"></Label>
-        </StackLayout>
-    </GridLayout>
-</StackLayout> 
+<GridLayout rows="24,16, *, 18, *" class="collection-card">
+    <Label row="0" [text]="collection.getTitle()" class="title row"></Label>
+    <Label row="1" [text]="collection.getCreatedAt()" class="subtitle row"></Label>
+    <Image row="2" [src]="collection.getCoverPhoto().getOriginal()" stretch="aspectFill" height="250"></Image>
+    <Label row="3" text="Photos {{collection.getPhotoCount()}}" class="regular"></Label>
+    <Label row="4" [text]="collection.getDescription()"></Label>
+</GridLayout>

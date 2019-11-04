@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter, ViewChild } from "@angular/core";
+import { Component, Input, OnInit, Output, EventEmitter, ViewChild, ChangeDetectionStrategy } from "@angular/core";
 import { Image } from "../image/image";
 import { GalleryService } from "./gallery.service";
 import { LoadOnDemandListViewEventData, RadListView, ListViewEventData } from "nativescript-ui-listview";
@@ -11,7 +11,7 @@ import { RadListViewComponent } from "nativescript-ui-listview/angular/listview-
     selector: "ImageGallery",
     templateUrl: "./gallery-component.html",
     styleUrls: ["./gallery-component.css"],
-    moduleId: module.id
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GalleryComponent implements OnInit {
 
