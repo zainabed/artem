@@ -14,4 +14,6 @@ export abstract class User {
     abstract getCollectionCount(): number;
     abstract setCollection(collections: Array<Collection>): void;
     abstract getCollection(): Array<Collection>;
+    abstract getFollowersCount(): number;
+    abstract getFollowingCount(): number;
 }

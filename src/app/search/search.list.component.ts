@@ -8,7 +8,10 @@ import { Image } from "../image/image";
 import { RouterExtensions } from "nativescript-angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { GALLERY_TYPE } from "../gallery/gallery.type";
-import { PhotoService } from "../photos/photo.service";
+import { Page } from "tns-core-modules/ui/page/page";
+import { ImageStore } from "../image/image.store";
+import { ImageFactory } from "../image/image.factory";
+import { ApplicationContext } from "../application.context";
 
 interface Item {
     title: string;
@@ -25,17 +28,19 @@ export class SearchListComponent implements OnInit {
     page: number;
     searchText: string;
     public galleryType: GALLERY_TYPE;
+    private imageStore: ImageStore;
+    private imageService: ImageService;
 
-    constructor(
-        private imageService: ImageService, 
-        private photoService: PhotoService,
-        private routerExtensions: RouterExtensions, 
-        private _activateRoute: ActivatedRoute) {
+    constructor(private routerExtensions: RouterExtensions, private viewPage: Page) {
         this.page = 1;
+        let imageFactory: ImageFactory = ApplicationContext.getImageFactory();
+        this.imageStore = imageFactory.getImageStore();
+        this.imageService = imageFactory.getImageService();
     }
 
     ngOnInit(): void {
         console.log("---- inside search ----")
+        this.viewPage.actionBarHidden = true;
         this.reset()
         this.galleryType = GALLERY_TYPE.GRID;
     }
@@ -43,11 +48,6 @@ export class SearchListComponent implements OnInit {
     reset() {
         this.page = 1;
         this.images = [];
-    }
-
-    onSelect(image: Image) {
-        this.imageService.setImage(image);
-        this.routerExtensions.navigate(["../explorer"], {relativeTo: this._activateRoute})
     }
 
     onSubmit(args: any) {
@@ -69,17 +69,16 @@ export class SearchListComponent implements OnInit {
     }
 
     onSearchSuccess(images: Array<Image>) {
-        this.images = this.images.concat(images); 
+        this.images = this.images.concat(images);
     }
 
     onFail(error: any) {
 
     }
 
-    onImageSelect(index: number){
-        this.photoService.setPhotos(this.images);
-        this.photoService.setIndex(index);
-        this.photoService.setTitle("Explorer");
-        this.routerExtensions.navigate(["/photos"]);
+    onImageSelect(index: number) {
+        this.imageStore.setImages(this.images);
+        this.imageStore.setTitle("Explorer");
+        this.routerExtensions.navigate(["/image-list", index]);
     }
 }

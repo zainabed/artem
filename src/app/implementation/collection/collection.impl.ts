@@ -1,6 +1,6 @@
-import { Image } from "../image/image";
-import { Collection } from "./collection";
-import { ImageImple } from "../implementation/image/image.impl";
+import { Image } from "../../image/image";
+import { Collection } from "../../collection/collection";
+import { ImageImple } from "../image/image.impl";
 
 export class CollectionImpl implements Collection {
 

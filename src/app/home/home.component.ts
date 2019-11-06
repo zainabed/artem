@@ -3,6 +3,8 @@ import { ImageService } from "../image/image.service";
 import { Image } from "../image/image";
 import { LoadOnDemandListViewEventData } from "nativescript-ui-listview";
 import { GALLERY_TYPE } from "../gallery/gallery.type";
+import { ImageFactory } from "../image/image.factory";
+import { ApplicationContext } from "../application.context";
 
 @Component({
     selector: "HomeComponent",
@@ -15,8 +17,11 @@ export class HomeComponent implements OnInit {
     searchKey: string;
     page: number;
     public galleryType: GALLERY_TYPE;
+    private imageService: ImageService;
 
-    constructor(private imageService: ImageService) {
+    constructor() {
+        let imageFactory: ImageFactory = ApplicationContext.getImageFactory();
+        this.imageService = imageFactory.getImageService();
     }
 
     ngOnInit(): void {

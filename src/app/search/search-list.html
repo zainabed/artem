@@ -1,11 +1,14 @@
-<StackLayout>
-    <SearchBar hint="Search hint" (submit)="onSubmit($event)" color="black" textFieldBackgroundColor="white"
-        textFieldHintColor="white"></SearchBar>
+<Page  xmlns="http://www.nativescript.org/tns.xsd" actionBarHidden="true">
+
     <StackLayout>
-        <ng-container>
-            <ImageGallery [images]="images" [type]="galleryType" 
-            (onTap)="onImageSelect($event)" (loadMore)="onLoadMoreItemsRequested($event)">
-            </ImageGallery>
-        </ng-container>
+        <SearchBar hint="Search hint" (submit)="onSubmit($event)" color="black" textFieldBackgroundColor="white"
+            textFieldHintColor="white"></SearchBar>
+        <StackLayout>
+            <ng-container>
+                <ImageGallery [images]="images" [type]="galleryType" (onTap)="onImageSelect($event)"
+                    (loadMore)="onLoadMoreItemsRequested($event)">
+                </ImageGallery>
+            </ng-container>
+        </StackLayout>
     </StackLayout>
-</StackLayout> 
+</Page>

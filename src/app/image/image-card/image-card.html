@@ -1,27 +1,15 @@
-<StackLayout class="image-card">
-    <GridLayout rows="72, *, 56, *">
-        <GridLayout columns="70,*" row="0">
-            <Image [src]="image.getProfilePicture()" column="0" class="profile" verticalAlignment="center"
-                (tap)="onProfileTap(image.getUsername())"></Image>
-            <StackLayout column="1" verticalAlignment="center">
-                <Label [text]="image.getUsername()" class="title"></Label>
-                <Label [text]="image.getLocation()" class="subtitle"></Label>
-            </StackLayout>
-        </GridLayout>
-        <StackLayout row="1" height="auto" class="image-container">
-            <Image [src]="image.getOriginal()" stretch="aspectFill"></Image>
-        </StackLayout>  
-        <GridLayout column="*, 48" row="2" class="row">
-            <StackLayout orientation="horizontal" column="0">
-                <Image src="res://ic_action_heart" class="image image--left"></Image>
-                <Image src="res://ic_action_chat" class="image image--left"></Image>
-                <Image src="res://ic_action_send" class="image image--left"></Image>
-            </StackLayout>
-            <Image src="res://ic_action_save" class="image image--right" column="1" horizontalAlignment="right"></Image>
-        </GridLayout>
-        <StackLayout row="3" class="row">
-            <Label text="likes {{image.getLikeCount()}}" class="regular"></Label>
-            <Label [text]="image.getDescription()"></Label>
-        </StackLayout>
-    </GridLayout>
-</StackLayout>
+<GridLayout margin="8 0" rows="24, 24, *, 48, 20, auto" columns="48, 48, 48, *, 48" class="image-card">
+    <Image row="0" col="0" rowSpan="2" [src]="image.getProfilePicture()"  class="profile" verticalAlignment="center"
+        (tap)="onProfileTap(image.getUsername())"></Image>
+    <Label row="0" col="1" colSpan="4" [text]="image.getUsername()" class="title" verticalAlignment="center"></Label>
+    <Label row="1" col="1" colSpan="4" [text]="image.getLocation()" class="subtitle" verticalAlignment="top"></Label>
+    <Image row="2" col="0" colSpan="5" [src]="image.getOriginal()" stretch="aspectFill"></Image>
+    <Image marginLeft="8" row="3" col="0" src="res://ic_action_heart" class="image "></Image>
+    <Image row="3" col="1"  src="res://ic_action_chat" class="image "></Image>
+    <Image row="3" col="2"  src="res://ic_action_send" class="image "></Image>
+    <Image marginRight="8" row="3" col="4" src="res://ic_action_save" class="image"  horizontalAlignment="right">
+    </Image>
+    <Label marginLeft="8" row="4" col="0" colSpan="3" text="likes {{image.getLikeCount()}}" class="regular"></Label>
+    <Label marginLeft="8" row="5" col="0" colSpan="5" [text]="image.getDescription()"></Label>
+
+</GridLayout>

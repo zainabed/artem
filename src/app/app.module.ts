@@ -16,7 +16,7 @@ import { AuthInterceptor } from "./util/http/auth.interceptor";
 import { UserModule } from "./user/user.module";
 import { IndexComponent } from "./index/index.component";
 import { CollectionModule } from "./collection/collection.module";
-import { PhotoModule } from "./photos/photo.module";
+import { ImageListModule } from "./image-list/image.list.module";
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -37,7 +37,7 @@ import { PhotoModule } from "./photos/photo.module";
         ExplorerModule,
         HomeModule,
         UserModule,
-        PhotoModule
+        ImageListModule
     ],
     declarations: [
         AppComponent,

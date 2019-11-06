@@ -4,7 +4,7 @@ import { ImageImple } from "../image/image.impl";
 import { Collection } from "~/app/collection/collection";
 
 export class UserImpl implements User {
-
+    
     private username: string;
     private name: string;
     private bio: string;
@@ -15,6 +15,8 @@ export class UserImpl implements User {
     private total_likes: number;
     private total_photos: number;
     private collections: Array<Collection>;
+    private followers_count: number;
+    private following_count: number;
 
     constructor(data: any) {
         this.collections = null;
@@ -45,7 +47,7 @@ export class UserImpl implements User {
 
     getProfilePicture(): string {
         if (!this.profile_image) return;
-        return this.profile_image.medium;
+        return this.profile_image.large;
     }
 
     getBio(): string {
@@ -78,6 +80,14 @@ export class UserImpl implements User {
 
     getCollection(): Collection[] {
         return this.collections;
+    }
+
+    getFollowersCount(): number {
+        return this.followers_count;
+    }
+
+    getFollowingCount(): number {
+        return this.following_count;
     }
 
 }

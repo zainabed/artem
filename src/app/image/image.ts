@@ -1,4 +1,5 @@
 export abstract class Image {
+    abstract getId(): string;
     abstract getThumbnail(): string;
     abstract getTitle(): string;
     abstract getDescription(): string;
@@ -10,4 +11,5 @@ export abstract class Image {
     abstract getProfilePicture(): string;
     abstract setLike(value: boolean): void;
     abstract getLike(): boolean;
+
 }

@@ -1,12 +1,12 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { GalleryComponent } from "./gallery.component";
 import { GalleryService } from "./gallery.service";
-import { GalleryServiceImpl } from "./gallery.service.impl";
+import { GalleryServiceImpl } from "../implementation/gallery/gallery.service.impl";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 import { ImageModule } from "../image/image.module";
 import { GalleryFactory } from "./gallery.factory";
-import { GalleryFactoryImpl } from "./gallery.factory.impl";
+import { GalleryFactoryImpl } from "../implementation/gallery/gallery.factory.impl";
 
 
 @NgModule({
@@ -20,9 +20,6 @@ import { GalleryFactoryImpl } from "./gallery.factory.impl";
     ],
     exports: [
         GalleryComponent
-    ],
-    providers: [
-        { provide: GalleryFactory, useClass: GalleryFactoryImpl }
     ],
     schemas: [NO_ERRORS_SCHEMA]
 })

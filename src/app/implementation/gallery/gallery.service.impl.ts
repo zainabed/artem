@@ -1,6 +1,6 @@
-import { GalleryService } from "./gallery.service";
-import { Image } from "../image/image"
-import { GALLERY_TYPE } from "./gallery.type";
+import { GalleryService } from "../../gallery/gallery.service";
+import { Image } from "../../image/image"
+import { GALLERY_TYPE } from "../../gallery/gallery.type";
 
 export class GalleryServiceImpl implements GalleryService {
     _type: string;

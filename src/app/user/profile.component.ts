@@ -3,13 +3,14 @@ import { Userservice } from "./user.service";
 import { User } from "./user";
 import { RouterExtensions } from "nativescript-angular/router";
 import { ActivatedRoute } from "@angular/router";
-import { UserImpl } from "../implementation/user/user.impl";
 import { Image } from "../image/image";
 import { CollectionService } from "../collection/collection.service";
 import { CollectionFactory } from "../collection/collection.factory";
 import { Collection } from "../collection/collection";
-import { PhotoService } from "../photos/photo.service";
 import { UserFactory } from "./user.factory";
+import { ApplicationContext } from "../application.context";
+import { ImageStore } from "../image/image.store";
+import { ImageFactory } from "../image/image.factory";
 
 @Component({
     selector: "Profile",
@@ -20,17 +21,19 @@ export class ProfileComponent implements OnInit {
     public user: User;
     public userService: Userservice;
     private colletioService: CollectionService;
+    private imageStore: ImageStore;
     username: string;
 
-    constructor(
-        private userFactory: UserFactory,
-        private collectionFactory: CollectionFactory,
-        private routerExtensions: RouterExtensions,
-        private photoService: PhotoService,
-        private route: ActivatedRoute) {
-        this.user = this.userFactory.getUser();
-        this.userService = this.userFactory.getUserService();
-        this.colletioService = this.collectionFactory.getCollectionService();
+    constructor(private routerExtensions: RouterExtensions, private route: ActivatedRoute) {
+        let userFactory: UserFactory = ApplicationContext.getUserFactory();
+        this.user = userFactory.getUser();
+        this.userService = userFactory.getUserService();
+
+        let collectionFactory: CollectionFactory = ApplicationContext.getCollectioFactory();
+        this.colletioService = collectionFactory.getCollectionService();
+
+        let imageFactory: ImageFactory = ApplicationContext.getImageFactory();
+        this.imageStore = imageFactory.getImageStore();
     }
 
     ngOnInit(): void {
@@ -67,9 +70,8 @@ export class ProfileComponent implements OnInit {
     }
 
     onImageSelect(index: number) {
-        this.photoService.setPhotos(this.user.getImages());
-        this.photoService.setIndex(index);
-        this.photoService.setTitle("Post");
-        this.routerExtensions.navigate(["photos"]);
+        this.imageStore.setImages(this.user.getImages());
+        this.imageStore.setTitle("Post");
+        this.routerExtensions.navigate(["image-list", index]);
     }
 }

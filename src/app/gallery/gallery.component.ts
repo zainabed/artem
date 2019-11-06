@@ -6,6 +6,7 @@ import { GALLERY_TYPE } from "./gallery.type";
 import { GalleryFactory } from "./gallery.factory";
 import { Page } from "tns-core-modules/ui/page/page";
 import { RadListViewComponent } from "nativescript-ui-listview/angular/listview-directives";
+import { ApplicationContext } from "../application.context";
 
 @Component({
     selector: "ImageGallery",
@@ -22,10 +23,11 @@ export class GalleryComponent implements OnInit {
     @ViewChild('listView', null) radListViewComponent: RadListViewComponent;
 
     public id: number;
-  
     public galleryType: GALLERY_TYPE;
     public galleryService: GalleryService;
-    constructor(galleryFactory: GalleryFactory, private page: Page) {
+
+    constructor(private page: Page) {
+        let galleryFactory: GalleryFactory = ApplicationContext.getGalleryFactory();
         this.galleryService = galleryFactory.getGalleryService();
         this.id = Math.random();
     }
@@ -36,7 +38,6 @@ export class GalleryComponent implements OnInit {
 
     ngOnInit(): void {
         console.log("----Image Gallery ---");
-        //this.listView = this.page.getViewById(this.id + "") as RadListView;
         this.galleryService.setType(this.type);
     }
 

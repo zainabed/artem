@@ -1,18 +1,24 @@
 import { Image } from "~/app/image/image";
 
 export class ImageImple implements Image {
-
+   
+    id:string;
     urls: any;
     alt_description: string;
     description: string;
     likes: any;
     user: any;
     like: boolean;
+    links: any;
 
     constructor(copy: any) {
-        Object.assign(this, copy);
+            Object.assign(this, copy);
     }
 
+    getId(): string {
+        return this.id;
+    }
+   
     getThumbnail(): string {
         return this.urls.raw + "&w=140&dpi=1&h=140&fit=crop";
     }
@@ -40,9 +46,11 @@ export class ImageImple implements Image {
     getLocation(): string {
         return this.user.location;
     }
+ 
     getUsername(): string {
         return this.user.username;
     }
+ 
     getProfilePicture(): string {
         return this.user.profile_image.medium;
     }
@@ -50,7 +58,14 @@ export class ImageImple implements Image {
     setLike(value: boolean): void {
         this.like = value;
     }
+ 
     getLike(): boolean {
         return this.like;
     }
+
+    getInfoUrl(): string {
+        return this.links.self;
+    }
+
+   
 }

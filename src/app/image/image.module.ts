@@ -17,9 +17,6 @@ import { ImageCardComponent } from "./image-card/image.card.component";
         ImageContainer,
         ImageCardComponent
     ],
-    providers: [
-        { provide: ImageService, useClass: ImageServiceImpl }
-    ],
     exports: [
         ImageContainer,
         ImageCardComponent

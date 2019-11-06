@@ -1,4 +1,4 @@
-<ActionBar [title]="user.getUsername()">
+<ActionBar [title]="user.getUsername()" class="action-bar">
     <NavigationButton icon="res://ic_action_back" (tap)="goBack()"></NavigationButton>
     <ActionItem text="Report..." ios.position="right" android.position="popup"></ActionItem>
     <ActionItem text="Block" ios.position="right" android.position="popup"></ActionItem>
@@ -7,20 +7,29 @@
     <ActionItem text="Hide Your Story" ios.position="right" android.position="popup"></ActionItem>
     <ActionItem text="Send Profile as Message" ios.position="right" android.position="popup"></ActionItem>
 </ActionBar>
-<GridLayout rows="48, 48, 24, 18, auto, auto, *" columns="72, *, *, *">
-    <Image marginLeft="8" row="0" col="0" rowSpan="2" [src]="user.getProfilePicture()" class="profile" verticalAlignment="center">
-    </Image>
-    <Label row="0" col="1" [text]="user.getPhotoCount()" class="heading" horizontalAlignment="center" verticalAlignment="center"></Label>
-    <Label row="0" col="2" [text]="user.getCollectionCount()" class="heading" horizontalAlignment="center" verticalAlignment="center"></Label>
-    <Label class="row" row="0" col="3" [text]="user.getLikeCount()" class="heading" horizontalAlignment="center" verticalAlignment="center"></Label>
+<GridLayout rows="48, 48, 24, 18, auto, auto, *" columns="80, *, *, *" verticalAlignment="center">
+    <StackLayout class="profile-container" marginLeft="8" row="0" col="0" rowSpan="2">
+        <Image [src]="user.getProfilePicture()" class="profile" >
+        </Image> 
+    </StackLayout>
+    <Label row="0" col="1" [text]="user.getPhotoCount()" class="heading" horizontalAlignment="center"
+        verticalAlignment="center"></Label>
+    <Label row="0" col="2" [text]="user.getFollowersCount()" class="heading" horizontalAlignment="center"
+        verticalAlignment="center"></Label>
+    <Label class="row" row="0" col="3" [text]="user.getFollowingCount()" class="heading" horizontalAlignment="center"
+        verticalAlignment="center"></Label>
     <Label row="1" col="1" text="Photos" class="subtitle" horizontalAlignment="center" verticalAlignment="top"></Label>
-    <Label row="1" col="2" text="Collections" class="subtitle" horizontalAlignment="center" verticalAlignment="top"></Label>
-    <Label row="1" col="3" text="Likes" class="subtitle" horizontalAlignment="center" verticalAlignment="top"></Label>
+    <Label row="1" col="2" text="Followers" class="subtitle" horizontalAlignment="center"
+        verticalAlignment="top"></Label>
+    <Label row="1" col="3" text="Following" class="subtitle" horizontalAlignment="center"
+        verticalAlignment="top"></Label>
     <Label marginLeft="8" row="2" col="0" colSpan="2" [text]="user.getName()" class="title"></Label>
-    <Button margin="0 8" row="2" col="2" colSpan="2" rowSpan="2"  class="button--primary" text="Follow" verticalAlignment="center"></Button>
+    <Button margin="0 8" row="2" col="2" colSpan="2" rowSpan="2" class="button--primary" text="Follow"
+        verticalAlignment="center"></Button>
     <Label marginLeft="8" row="3" col="0" colSpan="2" [text]="user.getLocation()" class="subtitle"></Label>
-    <Label marginLeft="8" row="4" col="0" colSpan="4" [text]="user.getBio()"></Label>
-    <StackLayout class="row" row="5" col="0" colSpan="4" tkExampleTitle tkToggleNavButton *ngIf="user.getCollectionCount()">
+    <Label marginLeft="8" row="4" col="0" colSpan="4" [text]="user.getBio()" marginBottom="8"></Label>
+    <StackLayout class="row" row="5" col="0" colSpan="4" tkExampleTitle tkToggleNavButton
+        *ngIf="user.getCollectionCount()">
         <CollectionPreviewList [collections]="user.getCollection()"></CollectionPreviewList>
     </StackLayout>
     <Tabs row="6" col="0" colSpan="4">

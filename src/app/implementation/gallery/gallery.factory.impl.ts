@@ -1,5 +1,5 @@
-import { GalleryFactory } from "./gallery.factory";
-import { GalleryService } from "./gallery.service";
+import { GalleryFactory } from "../../gallery/gallery.factory";
+import { GalleryService } from "../../gallery/gallery.service";
 import { GalleryServiceImpl } from "./gallery.service.impl";
 
 export class GalleryFactoryImpl implements GalleryFactory {

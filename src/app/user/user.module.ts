@@ -8,7 +8,7 @@ import { CollectionModule } from "../collection/collection.module";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
-import { UserFactoryImpl } from "./user.factory.impl";
+import { UserFactoryImpl } from "../implementation/user/user.factory.impl";
 import { UserFactory } from "./user.factory";
 
 
@@ -26,9 +26,6 @@ import { UserFactory } from "./user.factory";
     ],
     exports: [
         ProfileComponent
-    ],
-    providers: [
-        { provide: UserFactory, useClass: UserFactoryImpl }
     ],
     schemas: [NO_ERRORS_SCHEMA]
 })
