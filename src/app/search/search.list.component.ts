@@ -12,6 +12,7 @@ import { Page } from "tns-core-modules/ui/page/page";
 import { ImageStore } from "../image/image.store";
 import { ImageFactory } from "../image/image.factory";
 import { ApplicationContext } from "../application.context";
+import { HttpClient } from "@angular/common/http";
 
 interface Item {
     title: string;
@@ -31,11 +32,11 @@ export class SearchListComponent implements OnInit {
     private imageStore: ImageStore;
     private imageService: ImageService;
 
-    constructor(private routerExtensions: RouterExtensions, private viewPage: Page) {
+    constructor(private routerExtensions: RouterExtensions, private viewPage: Page, http:HttpClient) {
         this.page = 1;
         let imageFactory: ImageFactory = ApplicationContext.getImageFactory();
         this.imageStore = imageFactory.getImageStore();
-        this.imageService = imageFactory.getImageService();
+        this.imageService = imageFactory.getImageService(http);
     }
 
     ngOnInit(): void {

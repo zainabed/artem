@@ -13,10 +13,10 @@ import { ImageFactory } from "~/app/image/image.factory";
 export class ImageServiceImpl implements ImageService {
 
 
-    private http: HttpClient
+    
     private imageFactory: ImageFactory;
 
-    constructor() {
+    constructor(private http: HttpClient) {
         this.imageFactory = ApplicationContext.getImageFactory();
         let httpFactory: HttpFactory = ApplicationContext.getHttpFactory();
         this.http = httpFactory.getHttpClient();
@@ -27,8 +27,9 @@ export class ImageServiceImpl implements ImageService {
     }
 
     search(key: string, page: number): Observable<Array<Image>> {
+        
         return this.http.get<any>(this.getSearchApiPath(key, page)).pipe(
-            map(records => {
+            map(records => { 
                 return records.photos.results.map((data: any) => this.imageFactory.getImage(data))
             })
         )

@@ -13,7 +13,9 @@
     <StackLayout *tabItem="{ iconSource: 'res://ic_action_heart'}">
         <Label text="Like Tab" textWrap="true" class="m-15 h2 text-left" color="blue"></Label>
     </StackLayout>
-    <StackLayout *tabItem="{ iconSource: 'res://ic_action_avatar'}">
+    <!--<StackLayout *tabItem="{ iconSource: 'res://ic_action_avatar'}" >
         <Label text="Profile Tab" textWrap="true" class="m-15 h2 text-left" color="blue"></Label>
-    </StackLayout>
+    </StackLayout>-->
+    <page-router-outlet *tabItem="{ iconSource: 'res://ic_action_avatar'}" 
+        name="user"></page-router-outlet>
 </TabView>

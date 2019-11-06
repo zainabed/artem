@@ -21,6 +21,7 @@ export class GalleryComponent implements OnInit {
     @Output() onTap: EventEmitter<any> = new EventEmitter();
     @Input() scrollAt: number = 0;
     @ViewChild('listView', null) radListViewComponent: RadListViewComponent;
+    private currentImages: Array<Image>;
 
     public id: number;
     public galleryType: GALLERY_TYPE;
@@ -33,6 +34,7 @@ export class GalleryComponent implements OnInit {
     }
 
     @Input() set images(images: Array<Image>) {
+        this.currentImages = images;
         this.galleryService.setImages(images);
     }
 
@@ -42,6 +44,11 @@ export class GalleryComponent implements OnInit {
     }
 
     onLoadMore(args: LoadOnDemandListViewEventData) {
+        if (!this.currentImages.length) {
+            const listView: RadListView = args.object;
+            args.returnValue = false;
+            listView.notifyLoadOnDemandFinished(true);
+        }
         this.loadMore.emit(args);
     }
 
@@ -59,9 +66,8 @@ export class GalleryComponent implements OnInit {
         }
         setTimeout(() => {
             console.log("----- scrolling at : " + this.scrollAt);
-            console.log(this.radListViewComponent.listView);
             this.radListViewComponent.listView.scrollToIndex(this.scrollAt);
-        }, 200);
+        }, 100);
 
     }
 

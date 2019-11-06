@@ -11,5 +11,7 @@ export abstract class Image {
     abstract getProfilePicture(): string;
     abstract setLike(value: boolean): void;
     abstract getLike(): boolean;
+    abstract getHeight(): number;
+    abstract getWidth(): number;
 
 }

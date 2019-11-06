@@ -1,6 +1,7 @@
 import { Image } from "~/app/image/image";
 
 export class ImageImple implements Image {
+    
    
     id:string;
     urls: any;
@@ -10,6 +11,8 @@ export class ImageImple implements Image {
     user: any;
     like: boolean;
     links: any;
+    width: number;
+    height: number;
 
     constructor(copy: any) {
             Object.assign(this, copy);
@@ -67,5 +70,12 @@ export class ImageImple implements Image {
         return this.links.self;
     }
 
+    getHeight(): number {
+       return this.height;
+    }
+    
+    getWidth(): number {
+       return this.width;
+    }
    
 }

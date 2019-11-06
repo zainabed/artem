@@ -4,7 +4,7 @@ import { ImageImple } from "../image/image.impl";
 import { Collection } from "~/app/collection/collection";
 
 export class UserImpl implements User {
-    
+
     private username: string;
     private name: string;
     private bio: string;
@@ -21,8 +21,13 @@ export class UserImpl implements User {
     constructor(data: any) {
         this.collections = null;
         Object.assign(this, data);
-        this.images = data.photos;
+        if (data.photos) {
+            this.images = data.photos;
+        }
+    }
 
+    static getUser(data: any): User {
+        return new UserImpl(data);
     }
 
     set images(data: Array<any>) {

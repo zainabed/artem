@@ -15,14 +15,15 @@ Label{
     border-radius: 50%;
     width: 80;
     height: 80;
-    background-color: crimson;
+    background-image: crimson;
     
 }
 
 .profile{
     border-radius: 50%;
-    width: 79;
-    height: 79;
+    width: 78;
+    height: 78;
+    padding: 1;
     vertical-align: center;
    
 }

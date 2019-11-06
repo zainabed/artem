@@ -23,6 +23,10 @@ export class CollectionImpl implements Collection {
         Object.assign(this, data);
     }
 
+    static getInstance(data: any) {
+        return new this(data);
+    }
+
     getId(): number {
         return this.id;
     }

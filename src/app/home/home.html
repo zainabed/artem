@@ -1,10 +1,10 @@
 <ActionBar title="Instagram">
-    <NavigationButton icon="res://logo" ></NavigationButton>
+    <NavigationButton icon="res://logo"></NavigationButton>
     <ActionItem icon="res://send" class="fas" ios.position="right"></ActionItem>
 </ActionBar>
 <StackLayout>
     <ng-container>
         <ImageGallery [images]="images" type="list" (loadMore)="onLoadMoreItems($event)">
         </ImageGallery>
-    </ng-container> 
-</StackLayout> 
+    </ng-container>
+</StackLayout>

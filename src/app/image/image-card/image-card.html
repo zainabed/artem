@@ -1,9 +1,9 @@
 <GridLayout margin="8 0" rows="24, 24, *, 48, 20, auto" columns="48, 48, 48, *, 48" class="image-card">
     <Image row="0" col="0" rowSpan="2" [src]="image.getProfilePicture()"  class="profile" verticalAlignment="center"
-        (tap)="onProfileTap(image.getUsername())"></Image>
+        (tap)="onProfileTap(image.getUsername())" ></Image>
     <Label row="0" col="1" colSpan="4" [text]="image.getUsername()" class="title" verticalAlignment="center"></Label>
     <Label row="1" col="1" colSpan="4" [text]="image.getLocation()" class="subtitle" verticalAlignment="top"></Label>
-    <Image row="2" col="0" colSpan="5" [src]="image.getOriginal()" stretch="aspectFill"></Image>
+    <NSImage row="2" col="0" colSpan="5" [src]="image.getOriginal()" [height]="imageHeight" stretch="aspectFill"></NSImage>
     <Image marginLeft="8" row="3" col="0" src="res://ic_action_heart" class="image "></Image>
     <Image row="3" col="1"  src="res://ic_action_chat" class="image "></Image>
     <Image row="3" col="2"  src="res://ic_action_send" class="image "></Image>

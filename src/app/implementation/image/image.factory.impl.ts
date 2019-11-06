@@ -9,6 +9,7 @@ import { ImageMetadata } from "~/app/image/image.metadata";
 import { ImageMetadataImpl } from "./image.metadata.impl";
 import { ImageStore } from "~/app/image/image.store";
 import { ImageStoreImpl } from "./image.store.impl";
+import { HttpClient } from "@angular/common/http";
 
 export class ImageFactoryImpl implements ImageFactory {
     
@@ -22,8 +23,8 @@ export class ImageFactoryImpl implements ImageFactory {
         return new ImageInformationImpl(data);
     }
 
-    getImageService(): ImageService {
-        return new ImageServiceImpl();
+    getImageService(http: HttpClient): ImageService {
+        return new ImageServiceImpl(http);
     }
 
     getImageMetadata(data: any): ImageMetadata {

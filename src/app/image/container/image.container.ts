@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { Cache } from "tns-core-modules/ui/image-cache";
 import { fromFile, fromNativeSource, ImageSource } from "tns-core-modules/image-source";
 import { Image } from "../image";
+import { Observable } from "tns-core-modules/ui/page/page";
 
 @Component({
     selector: "ImageContainer",
@@ -10,40 +11,54 @@ import { Image } from "../image";
 })
 export class ImageContainer implements OnInit {
     @Input() public image: Image;
-    cache: Cache;
-
+    
     constructor() {
-        this.cache = new Cache();
-        // this.cache.placeholder = fromNativeSource("ic_action_home");
-        this.cache.maxRequests = 5;
     }
 
     ngOnInit(): void {
+        //const vm = new Observable();
+        //this.cacheImage(vm, this.image.getThumbnail());
+        //this.page.bindingContext = vm;
     }
 
-    loadImage(ImageURL: string) {
+    onLoaded(args) {
+     //   this.page = args.object;
+    }
 
-        const image = this.cache.get(ImageURL);
-        let cachedImageSource = null;
-        this.cache.enableDownload()
+    cacheImage(viewModel: Observable, ImageURL: string) {
+
+        // >> image-cache-code
+        const cache = new Cache();
+        cache.placeholder = fromFile("~/logo.png");
+        cache.maxRequests = 5;
+
+        // set the placeholder while the desired image is downloaded
+        viewModel.set("imageSource", cache.placeholder);
+
+        // Enable download while not scrolling
+        cache.enableDownload();
+
+        let cachedImageSource;
+        // Try to read the image from the cache
+        const image = cache.get(ImageURL);
+
         if (image) {
-            return image;
+            // If present -- use it.
+            cachedImageSource = fromNativeSource(image);
+            viewModel.set("imageSource", cachedImageSource);
         } else {
             // If not present -- request its download + put it in the cache.
-            this.cache.push({
+            cache.push({
                 key: ImageURL,
                 url: ImageURL,
                 completed: (image, key) => {
-                   
-                 //   if (ImageURL === key) {
+                    if (ImageURL === key) {
                         cachedImageSource = fromNativeSource(image);
-                        console.log(cachedImageSource);
-                        return cachedImageSource;
-                   // }
+                        viewModel.set("imageSource", cachedImageSource); // set the downloaded image
+                    }
                 }
             });
         }
 
-        this.cache.disableDownload();
     }
 }

@@ -12,15 +12,22 @@ import { CollectionFactory } from "~/app/collection/collection.factory";
 import { ImageFactory } from "~/app/image/image.factory";
 
 export class CollectionServiceImpl implements CollectionService {
-    private http: HttpClient;
     private collectionFactory: CollectionFactory;
     private imageFactory: ImageFactory;
+    private http: HttpClient;
+    private static _collectionService: CollectionService = null;
 
-    constructor() {
+    constructor(http: HttpClient) {
+        this.http = http;
         this.collectionFactory = ApplicationContext.getCollectioFactory();
         this.imageFactory = ApplicationContext.getImageFactory();
-        let httpFactory: HttpFactory = ApplicationContext.getHttpFactory();
-        this.http = httpFactory.getHttpClient();
+    }
+
+    static getInstance(http: HttpClient) {
+        if (this._collectionService == null) {
+            this._collectionService = new this(http);
+        }
+        return this._collectionService;
     }
 
     getUserCollectionApi(username: string): string {

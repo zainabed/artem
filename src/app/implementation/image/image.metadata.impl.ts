@@ -2,27 +2,34 @@ import { ImageMetadata } from "~/app/image/image.metadata";
 
 export class ImageMetadataImpl implements ImageMetadata {
 
+    make: string;
+    model: string;
+    exposure_time: string;
+    focal_length: number;
+    aperture: number;
+    iso: number;
+
     constructor(data: any) {
         Object.assign(this, data);
     }
 
     getDevice(): string {
-        throw new Error("Method not implemented.");
+        return this.make;
     }
     getDeviceModel(): string {
-        throw new Error("Method not implemented.");
+        return this.model;
     }
     getShutterSpeed(): string {
-        throw new Error("Method not implemented.");
+        return this.exposure_time;
     }
     getFocalLength(): number {
-        throw new Error("Method not implemented.");
+        return this.focal_length;
     }
     getAperture(): number {
-        throw new Error("Method not implemented.");
+        return this.aperture;
     }
     getIso(): number {
-        throw new Error("Method not implemented.");
+        return this.iso;
     }
 
 

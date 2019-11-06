@@ -1,9 +1,13 @@
 <StackLayout>
-    <RadListView [items]="collections">
-        <ng-template tkListItemTemplate let-item="item">
-            <StackLayout>
-                <Collection [collection]="item"></Collection>
-            </StackLayout>
+    <!--<StackLayout orientation="Horizontal" row="0" >
+        <ng-template *ngFor="let image of getImages()">
+            <Progress maxValue="100" margin="0 2" value="50" color="#8C489F" backgroundColor="#FFFF66">
+            </Progress>
         </ng-template>
-    </RadListView>
-</StackLayout>
+
+    </StackLayout>-->
+    <Progress [maxValue]="maxValue" margin="0 2" [value]="currentValue" color="#8C489F" backgroundColor="#FFFF66">
+    </Progress>
+    <NSImage *ngIf="image" [src]="image.getOriginal()" stretch="aspectFill" top="-24"></NSImage>
+
+</StackLayout>      
