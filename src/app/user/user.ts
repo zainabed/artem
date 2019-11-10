@@ -16,4 +16,6 @@ export abstract class User {
     abstract getCollection(): Array<Collection>;
     abstract getFollowersCount(): number;
     abstract getFollowingCount(): number;
+    abstract setLikePhotos(images: Array<Image>): void;
+    abstract getLikePhotos(): Array<Image>;
 }

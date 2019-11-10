@@ -1,4 +1,4 @@
-<StackLayout>
+<GridLayout rows="24 , *">
     <!--<StackLayout orientation="Horizontal" row="0" >
         <ng-template *ngFor="let image of getImages()">
             <Progress maxValue="100" margin="0 2" value="50" color="#8C489F" backgroundColor="#FFFF66">
@@ -6,8 +6,9 @@
         </ng-template>
 
     </StackLayout>-->
-    <Progress [maxValue]="maxValue" margin="0 2" [value]="currentValue" color="#8C489F" backgroundColor="#FFFF66">
+    <Progress row="0" [maxValue]="maxValue" margin="0 2" [value]="currentValue" color="#8C489F"
+        backgroundColor="#FFFF66">
     </Progress>
-    <NSImage *ngIf="image" [src]="image.getOriginal()" stretch="aspectFill" top="-24"></NSImage>
+    <NSImage row="1" *ngIf="image" [src]="image.getOriginal()" stretch="aspectFill" top="-24" height="100%"></NSImage>
 
-</StackLayout>      
+</GridLayout>

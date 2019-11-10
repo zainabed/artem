@@ -5,4 +5,5 @@ import { Observable } from "rxjs";
 export abstract class CollectionService {
     abstract getCollection(username: string): Observable<Array<Collection>>;
     abstract getCollectionPhotos(collectionId: number): Observable<Array<Image>>;
+    abstract search(query: string, page: number): Observable<Array<Collection>>;
 }

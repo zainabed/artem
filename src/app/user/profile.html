@@ -7,10 +7,11 @@
     <ActionItem text="Hide Your Story" ios.position="right" android.position="popup"></ActionItem>
     <ActionItem text="Send Profile as Message" ios.position="right" android.position="popup"></ActionItem>
 </ActionBar>
+<!--<ScrollView orientation="vertical">-->
 <GridLayout rows="48, 48, 24, 18, auto, auto, *" columns="80, *, *, *" verticalAlignment="center">
     <StackLayout class="profile-container" marginLeft="8" row="0" col="0" rowSpan="2">
         <Image [src]="user.getProfilePicture()" class="profile">
-        </Image> 
+        </Image>
     </StackLayout>
     <Label row="0" col="1" [text]="user.getPhotoCount()" class="heading" horizontalAlignment="center"
         verticalAlignment="center"></Label>
@@ -29,16 +30,15 @@
     <Button *ngIf="userSecurity.isLoggedUser(user)" margin="0 8" row="2" col="2" colSpan="2" rowSpan="2"
         class="button--secondary" text="Edit Profile" verticalAlignment="center"></Button>
     <Label marginLeft="8" row="3" col="0" colSpan="2" [text]="user.getLocation()" class="subtitle"></Label>
-    <Label marginLeft="8" row="4" col="0" colSpan="4" [text]="user.getBio()" marginBottom="8"></Label>
-    <StackLayout  row="5" col="0" colSpan="4" tkExampleTitle tkToggleNavButton
-        *ngIf="user.getCollectionCount()">
+    <Label marginLeft="8" row="4" col="0" colSpan="4" textWrap="true" [text]="user.getBio()" marginBottom="8"></Label>
+    <StackLayout row="5" col="0" colSpan="4" tkExampleTitle tkToggleNavButton *ngIf="user.getCollectionCount()">
         <CollectionPreviewList [collections]="user.getCollection()"></CollectionPreviewList>
-    </StackLayout> 
+    </StackLayout>
     <Tabs row="6" col="0" colSpan="4">
         <TabStrip>
             <TabStripItem iconSource="res://ic_action_grid">
             </TabStripItem>
-            <TabStripItem iconSource="res://ic_action_collection">
+            <TabStripItem iconSource="res://ic_action_like">  
             </TabStripItem>
         </TabStrip>
         <TabContentItem>
@@ -51,8 +51,11 @@
 
         <TabContentItem>
             <GridLayout>
-                <!--<CollectionList [collections]="user.getCollection()"></CollectionList>-->
+                <ImageGallery [images]="user.getLikePhotos()" type="grid" (onTap)="onImageSelect($event)"
+                    (loadMore)="loadPhotos($event)">
+                </ImageGallery>
             </GridLayout>
         </TabContentItem>
-    </Tabs> 
+    </Tabs>
 </GridLayout>
+<!--</ScrollView>-->

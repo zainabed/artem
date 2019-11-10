@@ -1,9 +1,16 @@
 <!-- https://docs.nativescript.org/angular/core-concepts/angular-navigation.html#page-router-outlet -->
-
+<ActionBar title="Instagram" class="action-bar">
+    <ActionItem text="Report..." ios.position="right" android.position="popup"></ActionItem>
+    <ActionItem text="Block" ios.position="right" android.position="popup"></ActionItem>
+    <ActionItem text="About This Account" ios.position="right" android.position="popup"></ActionItem>
+    <ActionItem text="Restrict" ios.position="right" android.position="popup"></ActionItem>
+    <ActionItem text="Hide Your Story" ios.position="right" android.position="popup"></ActionItem>
+    <ActionItem text="Send Profile as Message" ios.position="right" android.position="popup"></ActionItem>
+</ActionBar>
 <TabView androidTabsPosition="bottom">
-    <StackLayout *tabItem="{ iconSource: 'res://ic_action_home'}">  
+    <StackLayout *tabItem="{ iconSource: 'res://ic_action_home'}">
         <HomeComponent></HomeComponent>
-    </StackLayout> 
+    </StackLayout>
     <StackLayout *tabItem="{ iconSource: 'res://ic_action_search'}">
         <SearchList></SearchList>
     </StackLayout>
@@ -16,6 +23,7 @@
     <!--<StackLayout *tabItem="{ iconSource: 'res://ic_action_avatar'}" >
         <Label text="Profile Tab" textWrap="true" class="m-15 h2 text-left" color="blue"></Label>
     </StackLayout>-->
-    <page-router-outlet *tabItem="{ iconSource: 'res://ic_action_avatar'}" 
-        name="user"></page-router-outlet>
+    <StackLayout *tabItem="{ iconSource: 'res://ic_action_avatar'}" (tap)="onUserTap()">
+        <CurrentUser></CurrentUser>
+    </StackLayout>
 </TabView>

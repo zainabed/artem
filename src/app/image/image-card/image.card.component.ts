@@ -2,6 +2,9 @@ import { Input, OnInit, Component } from "@angular/core";
 import { Image } from "../image";
 import { RouterExtensions } from "nativescript-angular/router";
 import { screen } from "tns-core-modules/platform/platform"
+import { ActivatedRoute } from "@angular/router";
+import { ImageFactory } from "../image.factory";
+import { ApplicationContext } from "~/app/application.context";
 
 @Component({
     selector: "ImageCard",
@@ -10,18 +13,30 @@ import { screen } from "tns-core-modules/platform/platform"
 })
 export class ImageCardComponent implements OnInit {
 
-    @Input() image: Image;
+    _image: Image;
     public imageHeight: number = 200;
 
-    constructor(private routerExtensions: RouterExtensions) { }
+    constructor(private routerExtensions: RouterExtensions, private activeRoute: ActivatedRoute) {
+        this.image = null;
+    }
 
     ngOnInit(): void {
-        console.log(this.getImageHeight());
         this.imageHeight = this.getImageHeight();
     }
 
+    @Input() set image(image: Image) {
+        if (!image) {
+            let imageFactory: ImageFactory = ApplicationContext.getImageFactory();
+            image = imageFactory.getImage({});
+        }
+        this._image = image;
+    }
+
+    get image(): Image {
+        return this._image;
+    }
+
     onProfileTap(username: string) {
-        console.log("tap on : " + username);
         this.routerExtensions.navigate(["/profile", username]);
     }
 

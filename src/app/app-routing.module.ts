@@ -9,16 +9,19 @@ import { ProfileComponent } from "./user/profile.component";
 import { IndexComponent } from "./index/index.component";
 import { ImageListComponent } from "./image-list/image.list.component";
 import { CollectionListComponent } from "./collection/list/collection.list.component";
+import { CurrentUserComponent } from "./user/current.user.component";
 
 const routes: Routes = [
-    { path: "", component: IndexComponent },
-    //{ path: "index", redirectTo: "/(home:home//search:search)", pathMatch: "full" },
-    { path: "home", component: HomeComponent, outlet: "home" },
-    { path: "search", component: SearchListComponent, outlet: "search" },
-    { path: "explorer", component: ExplorerComponent, outlet: "search" },
+    { path: "", component: IndexComponent , pathMatch: "full"},
+    //{ path: "", redirectTo: "/(home:home//search:search//user:user)", pathMatch: "full" },
+    { path: "home", component: HomeComponent },
+    { path: "user", component: CurrentUserComponent },
+    { path: "search", component: SearchListComponent },
+    { path: "explorer", component: ExplorerComponent }, 
     { path: "profile/:id", component: ProfileComponent },
     { path: "image-list/:indexAt", component: ImageListComponent },
-    { path: "user-profile", component: ProfileComponent, outlet: "user" },
+    { path: "collection/:id", component: CollectionListComponent },
+    { path: "user-profile", component: ProfileComponent },
     { path: "collection/:id", component: CollectionListComponent }
 ];
 

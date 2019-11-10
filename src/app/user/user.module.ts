@@ -10,6 +10,7 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 import { UserFactoryImpl } from "../implementation/user/user.factory.impl";
 import { UserFactory } from "./user.factory";
+import { CurrentUserComponent } from "./current.user.component";
 
 
 @NgModule({
@@ -22,10 +23,12 @@ import { UserFactory } from "./user.factory";
         NativeScriptModule
     ],
     declarations: [
-        ProfileComponent
+        ProfileComponent,
+        CurrentUserComponent
     ],
     exports: [
-        ProfileComponent
+        ProfileComponent,
+        CurrentUserComponent
     ],
     schemas: [NO_ERRORS_SCHEMA]
 })

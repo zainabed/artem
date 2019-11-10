@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter, ViewChild, ChangeDetectionStrategy } from "@angular/core";
 import { Image } from "../image/image";
 import { GalleryService } from "./gallery.service";
-import { LoadOnDemandListViewEventData, RadListView, ListViewEventData } from "nativescript-ui-listview";
+import { LoadOnDemandListViewEventData, RadListView, ListViewEventData, ListViewScrollEventData } from "nativescript-ui-listview";
 import { GALLERY_TYPE } from "./gallery.type";
 import { GalleryFactory } from "./gallery.factory";
 import { Page } from "tns-core-modules/ui/page/page";
@@ -19,8 +19,11 @@ export class GalleryComponent implements OnInit {
     @Input() type: GALLERY_TYPE;
     @Output() loadMore: EventEmitter<any> = new EventEmitter();
     @Output() onTap: EventEmitter<any> = new EventEmitter();
+    @Output() onScrolled: EventEmitter<any> = new EventEmitter();
     @Input() scrollAt: number = 0;
+    @Input() marginValue: number = 0;
     @ViewChild('listView', null) radListViewComponent: RadListViewComponent;
+    private listView: RadListView;
     private currentImages: Array<Image>;
 
     public id: number;
@@ -39,7 +42,6 @@ export class GalleryComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log("----Image Gallery ---");
         this.galleryService.setType(this.type);
     }
 
@@ -60,14 +62,20 @@ export class GalleryComponent implements OnInit {
         this.scrollTo();
     }
 
+    scrolledEvent(args: ListViewScrollEventData){
+        this.onScrolled.emit(args);
+        this.listView = args.object as RadListView;
+    }
+
     scrollTo() {
-        if (this.type == "grid") {
+        if (this.type == "grid" || !this.scrollAt) {
             return;
         }
+        let self = this;
         setTimeout(() => {
-            console.log("----- scrolling at : " + this.scrollAt);
-            this.radListViewComponent.listView.scrollToIndex(this.scrollAt);
-        }, 100);
+            console.log("----- scrolling at : " + self.scrollAt);
+            self.listView.scrollToIndex(self.scrollAt);
+        }, 1000);
 
     }
 

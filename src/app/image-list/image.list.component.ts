@@ -16,7 +16,7 @@ export class ImageListComponent implements OnInit {
 
     type: string = "list";
     public imageStore: ImageStore;
-    private index: number;
+    private index: number = 0;
 
     constructor(private routerExtensions: RouterExtensions, private route: ActivatedRoute) {
         let imageFactory: ImageFactory = ApplicationContext.getImageFactory();

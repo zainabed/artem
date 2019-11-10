@@ -32,7 +32,7 @@ export class SearchListComponent implements OnInit {
     private imageStore: ImageStore;
     private imageService: ImageService;
 
-    constructor(private routerExtensions: RouterExtensions, private viewPage: Page, http:HttpClient) {
+    constructor(private routerExtensions: RouterExtensions, private viewPage: Page, http: HttpClient, private route: ActivatedRoute) {
         this.page = 1;
         let imageFactory: ImageFactory = ApplicationContext.getImageFactory();
         this.imageStore = imageFactory.getImageStore();
@@ -80,6 +80,6 @@ export class SearchListComponent implements OnInit {
     onImageSelect(index: number) {
         this.imageStore.setImages(this.images);
         this.imageStore.setTitle("Explorer");
-        this.routerExtensions.navigate(["/image-list", index]);
+        this.routerExtensions.navigate(["../image-list", index], { relativeTo: this.route });
     }
 }

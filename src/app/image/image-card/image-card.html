@@ -1,4 +1,4 @@
-<GridLayout margin="8 0" rows="24, 24, *, 48, 20, auto" columns="48, 48, 48, *, 48" class="image-card">
+<GridLayout margin="8 0" rows="24, 24, *, 48, 20, auto" columns="48, 48, 48, *, 48" class="image-card" *ngIf="image != undefined">
     <Image row="0" col="0" rowSpan="2" [src]="image.getProfilePicture()"  class="profile" verticalAlignment="center"
         (tap)="onProfileTap(image.getUsername())" ></Image>
     <Label row="0" col="1" colSpan="4" [text]="image.getUsername()" class="title" verticalAlignment="center"></Label>
@@ -11,5 +11,4 @@
     </Image>
     <Label marginLeft="8" row="4" col="0" colSpan="3" text="likes {{image.getLikeCount()}}" class="regular"></Label>
     <Label marginLeft="8" row="5" col="0" colSpan="5" [text]="image.getDescription()"></Label>
-
-</GridLayout>
+</GridLayout> 

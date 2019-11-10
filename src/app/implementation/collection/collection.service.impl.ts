@@ -4,14 +4,12 @@ import { map } from "rxjs/operators";
 import { Collection } from "../../collection/collection";
 import { Image } from "../../image/image";
 import { HttpClient } from "@angular/common/http";
-import { CollectionImpl } from "./collection.impl";
-import { ImageImple } from "../image/image.impl";
 import { ApplicationContext } from "~/app/application.context";
-import { HttpFactory } from "~/app/util/http/http.factory";
 import { CollectionFactory } from "~/app/collection/collection.factory";
 import { ImageFactory } from "~/app/image/image.factory";
 
 export class CollectionServiceImpl implements CollectionService {
+
     private collectionFactory: CollectionFactory;
     private imageFactory: ImageFactory;
     private http: HttpClient;
@@ -52,5 +50,13 @@ export class CollectionServiceImpl implements CollectionService {
             );
     }
 
+    getSearchApi(query: string, page: number): string {
+        return `https://api.unsplash.com/search/collections?page=${page}&query=${query}`;
+    }
+
+    search(query: string, page: number): Observable<Collection[]> {
+        return this.http.get<any>(this.getSearchApi(query, page))
+            .pipe((data: any) => data.results.map((collection: any) => this.collectionFactory.getCollection(collection)));
+    }
 
 }

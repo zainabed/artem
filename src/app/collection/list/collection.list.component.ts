@@ -12,8 +12,7 @@ import { take } from "rxjs/operators";
 @Component({
     selector: "CollectionList",
     templateUrl: "./collection-list.html",
-    styleUrls: ["./collection-list.css"],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    styleUrls: ["./collection-list.css"]
 })
 export class CollectionListComponent implements OnInit {
     private images: Array<Image>;
@@ -58,8 +57,6 @@ export class CollectionListComponent implements OnInit {
             clearInterval(this.interval);
             return;
         }
-        console.log(this.currentValue);
-        console.log(this.images[this.currentValue]);
         this.image = this.images[this.currentValue];
     }
 

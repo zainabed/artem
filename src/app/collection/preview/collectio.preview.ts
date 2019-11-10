@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Collection } from "../collection";
 import { RouterExtensions } from "nativescript-angular/router";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "CollectionPreview",
@@ -11,7 +12,7 @@ export class CollectionPreview implements OnInit {
 
   @Input() collection: Collection;
 
-  constructor(private router: RouterExtensions) {
+  constructor(private router: RouterExtensions, private route: ActivatedRoute) {
 
   }
 
@@ -20,6 +21,6 @@ export class CollectionPreview implements OnInit {
   }
 
   onNavigate(id: number) {
-    this.router.navigate(["/collection", id]);
+    this.router.navigate(["../../collection", id], { relativeTo: this.route });
   }
-}
+} 

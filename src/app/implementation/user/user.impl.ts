@@ -11,6 +11,7 @@ export class UserImpl implements User {
     private location: string;
     private profile_image: any;
     private _images: Array<Image>;
+    private _likePhotos: Array<Image>;
     private total_collections: number;
     private total_likes: number;
     private total_photos: number;
@@ -35,7 +36,6 @@ export class UserImpl implements User {
             return;
         }
         this._images = data.map(image => new ImageImple(image));
-        console.log(this._images);
     }
 
     setImages(images: Image[]): void {
@@ -93,6 +93,13 @@ export class UserImpl implements User {
 
     getFollowingCount(): number {
         return this.following_count;
+    }
+
+    setLikePhotos(images: Image[]): void {
+        this._likePhotos = images;
+    }
+    getLikePhotos(): Image[] {
+        return this._likePhotos;
     }
 
 }
